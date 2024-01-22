@@ -5,8 +5,9 @@ import css from './ContactForm.module.css';
 
 const schema = yup.object().shape({
   name: yup.string().matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/, 'Name is not valid').required(),
-  number: yup.string().matches(/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/, 'Number is not valid').required(),
+  number: yup.string().matches(/^\d+$/, 'Number should only contain digits').required(),
 });
+
 
 const initialValues = { name: '', number: '' };
 
@@ -20,9 +21,9 @@ export function ContactForm({ handleFormSubmit }) {
             <ErrorMessage name="name" component="div" className={css.error} />
           </label>
 
-          <label className={css.label}>
+          <label className={css.label} typeof='number'>
             <p>Phone number</p>
-            <Field type="tel" name="number" placeholder="+380-00-000-00-00" className={css.field}/>
+            <Field type="tel" name="number" placeholder="+380-00-000-00-00" pattern="[0-9]*" className={css.field}/>
             <ErrorMessage name="number" component="div" className={css.error} />
           </label>
 

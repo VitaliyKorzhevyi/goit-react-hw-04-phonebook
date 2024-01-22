@@ -11,7 +11,6 @@ export const App = () => {
 
   useEffect(() => {
     const storedContacts = JSON.parse(localStorage.getItem('contacts'));
-    console.log('нужна ваша помощь, почему происходит двойной ренднринг компонента, никак не могу найти причину', storedContacts);
     if (storedContacts) {
       setContacts(storedContacts);
     }
